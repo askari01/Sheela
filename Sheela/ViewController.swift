@@ -24,10 +24,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+//        let scene = SCNScene(named: "art.scnassets/ship.scn")!
         
         // Set the scene to the view
-        sceneView.scene = scene
+//        sceneView.scene = scene
         
         // trying to add text and a box
         
@@ -39,10 +39,30 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         text.firstMaterial?.diffuse.contents = UIColor.orange
         
         let textNode = SCNNode(geometry: text)
+        textNode.name = "circle"
         textNode.position = SCNVector3(0, 0.3, -0.5)
         textNode.scale = SCNVector3(0.02, 0.02, 0.02)
         
         sceneView.scene.rootNode.addChildNode(textNode)
+    }
+    
+    // adding touch
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        let touchPointScene = touch?.location(in: sceneView)
+        let hitResults = sceneView.hitTest(touchPointScene!, options: nil)
+        if let result = hitResults.first {
+            handleTouchFor(node: result.node)
+        }
+        
+    }
+    
+    // touch check
+    func handleTouchFor(node: SCNNode) {
+        print ("hello sheela")
+        if node.name == "circle" {
+            print("Sheeela Touched")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
