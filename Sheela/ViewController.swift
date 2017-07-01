@@ -28,6 +28,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        // trying to add text and a box
+        
+//        var box = SCNNode(geometry: SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0))
+//        box.position = SCNVector3(0, 0, -0.2)
+//        sceneView.scene.rootNode.addChildNode(box)
+        
+        var text = SCNText(string: "My Name is Sheela", extrusionDepth: 0.1)
+        text.firstMaterial?.diffuse.contents = UIColor.orange
+        
+        let textNode = SCNNode(geometry: text)
+        textNode.position = SCNVector3(0, 0.3, -0.5)
+        textNode.scale = SCNVector3(0.02, 0.02, 0.02)
+        
+        sceneView.scene.rootNode.addChildNode(textNode)
     }
     
     override func viewWillAppear(_ animated: Bool) {
