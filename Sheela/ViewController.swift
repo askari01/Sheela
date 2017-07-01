@@ -40,10 +40,24 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let textNode = SCNNode(geometry: text)
         textNode.name = "circle"
-        textNode.position = SCNVector3(0, 0.3, -0.5)
-        textNode.scale = SCNVector3(0.02, 0.02, 0.02)
+        textNode.position = SCNVector3(0, 0, -3)
+//        textNode.scale = SCNVector3(0.02, 0.02, 0.02)
         
         sceneView.scene.rootNode.addChildNode(textNode)
+        
+        let image = UIImage(named: "kat")
+        let floor = SCNFloor()
+        let material = SCNMaterial()
+        material.diffuse.contents = image
+        material.isDoubleSided = true
+        
+        floor.materials = [material]
+        let floorNode = SCNNode(geometry: floor)
+        floorNode.position = SCNVector3(0, -90, 0)
+//        floorNode.scale = SCNVector3(-0.01, -0.01, -0.01)
+        floorNode.rotation = SCNVector4(300,0,30,-90)
+        
+        sceneView.scene.rootNode.addChildNode(floorNode)
     }
     
     // adding touch
