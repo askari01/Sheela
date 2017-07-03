@@ -24,10 +24,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         // Create a new scene
-//        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene(named: "art.scnassets/test.scn")!
         
         // Set the scene to the view
-//        sceneView.scene = scene
+        sceneView.scene = scene
         
         // trying to add text and a box
         
@@ -57,7 +57,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //        floorNode.scale = SCNVector3(-0.01, -0.01, -0.01)
         floorNode.rotation = SCNVector4(300,0,30,-90)
         
-        sceneView.scene.rootNode.addChildNode(floorNode)
+//        sceneView.scene.rootNode.addChildNode(floorNode)
     }
     
     // adding touch
